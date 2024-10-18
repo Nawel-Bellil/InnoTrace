@@ -9,8 +9,7 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     role: {
       type: String,
-      enum: ["manager", "operator", "operatorSupervisor"],
-      required: true,
+      enum: ["manager", "operator", "user"],
     },
     assignedMachines: [{ type: Schema.Types.ObjectId, ref: "Machine" }], // Operators and Supervisors may have assigned machines
   },
