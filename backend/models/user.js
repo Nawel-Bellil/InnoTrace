@@ -1,4 +1,3 @@
-// models/User.js
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
@@ -12,7 +11,8 @@ const userSchema = new mongoose.Schema(
       enum: ["manager", "operator", "operatorSupervisor"],
       required: true,
     },
-    assignedMachines: [{ type: Schema.Types.ObjectId, ref: "Machine" }], // Operators and Supervisors may have assigned machines
+    assignedMachines: [{ type: Schema.Types.ObjectId, ref: "Machine" }],
+    assignedShifts: [{ type: Schema.Types.ObjectId, ref: "Shift" }] // Added field for assigned shifts
   },
   { timestamps: true }
 );

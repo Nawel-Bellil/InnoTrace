@@ -41,6 +41,7 @@ const productionSchema = new Schema({
     enum: ['In Progress', 'Completed', 'Halted'], // Production status
     default: 'In Progress',
   },
+  shiftId: { type: Schema.Types.ObjectId, ref: 'Shift' } // Reference to the Shift model
 });
 
 module.exports = mongoose.model('Production', productionSchema);
