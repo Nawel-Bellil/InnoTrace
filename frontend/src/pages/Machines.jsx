@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion'; // Import Framer Motion
-import machinesData from '../data_machin';  // Replace with your data source
+import machinesData from '../constants/data_machin';  // Replace with your data source
 
 const Machines = () => {
     const [machines, setMachines] = useState(machinesData);  // State for managing machines

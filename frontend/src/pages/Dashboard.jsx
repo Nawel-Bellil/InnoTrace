@@ -1,5 +1,5 @@
 import React from 'react';
-import { dashboardData } from '../data';
+import { dashboardData } from '../constants/data';
 
 const Dashboard = () => {
   const { totalUsers, totalProduction, energyConsumption, machinesFunctioning, activity, weakestTopics, strongestTopics, analytics } = dashboardData;

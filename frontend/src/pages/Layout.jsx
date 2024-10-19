@@ -71,10 +71,10 @@ const Layout = ({ profile }) => {
                             <span>Tasks</span>
                         </li>
                         </Link>
-                        <Link to="Settings">
+                        <Link to="/Production">
                         <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <img src={SettingsCon} alt="Settings con" />
-                            <span>Settings</span>
+                            <span>Productions</span>
                         </li>
                         </Link>
                     </ul>

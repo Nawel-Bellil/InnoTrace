@@ -1,13 +1,20 @@
-import React from 'react';
-import DesktopRobot from '/public/desktop-image.png';
-import MobileRobot from '/public/mobile-image.png';
+import React, { useState } from 'react';
+import DesktopRobot from '/desktop-image.png';
+import MobileRobot from '/mobile-image.png';
 
-export default function Login() {
+export default function Login({ onLogin, loginFailed }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission
+    onLogin(email, password); // Call the login function passed from App
+  };
+
   return (
     <div className="flex bg-customGrey min-h-screen">
       {/* Yellow background div taking the left half of the screen */}
       <div className="lg:w-1/2 w-full lg:h-screen h-auto bg-customYellow lg:rounded-r-[100px] flex flex-col justify-center items-center">
-
         {/* Left section with form */}
         <div className="bg-white lg:w-[400px] w-full h-auto rounded-[20px] p-6 mx-auto flex flex-col justify-center">
           <div className="min-h-full flex flex-col justify-center">
@@ -37,8 +44,7 @@ export default function Login() {
 
             {/* Form */}
             <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-sm">
-              <form action="#" method="POST" className="space-y-3">
-
+              <form onSubmit={handleSubmit} className="space-y-3">
                 {/* Username/Email Input */}
                 <div>
                   <label htmlFor="email" className="block text-[14px] font-medium leading-6 text-gray-900">
@@ -51,6 +57,8 @@ export default function Login() {
                       type="email"
                       placeholder=" Username or email address"
                       required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)} // Update email state
                       className="bg-customCyan2 w-full lg:w-[300px] h-[45px] placeholder-customGrey2 border-0 text-gray-900 shadow-sm"
                     />
                   </div>
@@ -68,6 +76,8 @@ export default function Login() {
                       type="password"
                       placeholder=" Password"
                       required
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)} // Update password state
                       className="bg-customCyan2 w-full lg:w-[300px] h-[45px] placeholder-customGrey2 border-0 text-gray-900 shadow-sm"
                     />
                   </div>
@@ -87,6 +97,13 @@ export default function Login() {
                     Sign in
                   </button>
                 </div>
+
+                {/* Popup for Login Failure */}
+                {loginFailed && (
+                  <div className="mt-4 text-red-600 text-center">
+                    <p>Log in failed. Please check your credentials.</p>
+                  </div>
+                )}
               </form>
             </div>
           </div>
