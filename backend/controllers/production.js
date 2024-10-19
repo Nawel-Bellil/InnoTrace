@@ -72,3 +72,60 @@ exports.updateScheduledProduction = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+// Log production events (e.g., when a unit is produced or defect detected)
+exports.logProductionEvent = async (req, res) => {
+  const { id } = req.params;
+  const { message } = req.body; // e.g., "Produced unit", "Defect detected"
+
+  try {
+    const production = await Production.findById(id);
+    if (!production) return res.status(404).json({ message: 'Production not found' });
+
+    // Add a log entry
+    production.productionLogs.push({ message });
+    await production.save();
+
+    res.status(200).json(production);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Update production quantities (e.g., after a successful unit is produced)
+exports.updateProductionQuantities = async (req, res) => {
+  const { id } = req.params;
+  const { successfulQuantity, defectiveQuantity } = req.body;
+
+  try {
+    const production = await Production.findByIdAndUpdate(
+      id,
+      {
+        $inc: {
+          successfulQuantity,
+          defectiveQuantity,
+        },
+      },
+      { new: true }
+    );
+
+    if (!production) return res.status(404).json({ message: 'Production not found' });
+
+    res.status(200).json(production);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Get production status including tracking logs
+exports.getProductionStatus = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const production = await Production.findById(id).populate('machinesUsed');
+    if (!production) return res.status(404).json({ message: 'Production not found' });
+
+    res.status(200).json(production);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
