@@ -5,7 +5,7 @@ const socketIo = require('socket.io');
 const cors = require("cors"); 
 const authRoute=require("./routes/authRoutes");
 const userRoute=require("./routes/userRoutes");
-const machineRoute=require("./routes/machineRoute");
+const machine=require("./routes/machine");
 const machinedataRoute=require("./routes/machines_data3");
 const taskRoute=require("./routes/taskRoutes");
 const connectToDB = require("./lib/connectToDB");
@@ -53,7 +53,7 @@ app.use("/api/auth",authRoute);
 app.use("/api/user",userRoute);
 
 //machine route
-app.use('/api/machine', machineRoute);
+app.use('/api/machine', machine);
 
 /// machine data (test)
 
