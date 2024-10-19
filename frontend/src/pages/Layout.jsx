@@ -22,7 +22,7 @@ const Layout = ({ profile }) => {
 
     return (
         <>
-            <div className="flex lg : h-[910px] " >
+            <div className="flex lg:h-[1030px] " >
                 {/* Toggle button for mobile view */}
                 <button
                     className="text-gray-800 p-3 fixed focus:outline-none lg:hidden z-20" // Added z-index to ensure button is on top
@@ -46,6 +46,7 @@ const Layout = ({ profile }) => {
                                 <span>Dashboard</span>
                             </li>
                         </Link>
+                        <Link to="/Machines">
                         <li className="flex items-center justify-between space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer relative">
                             <div className="flex items-center">
                                 <img className="" src={MachineCon} alt="MachineCon" />
@@ -53,20 +54,25 @@ const Layout = ({ profile }) => {
                             </div>
                             <span className="text-sm bg-red-500 text-white rounded-full px-2 absolute right-2">2</span>
                         </li>
+                        </Link>
                         <Link to="/users">
                         <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <img src={UserCon} alt="UserCon"  />
                             <span>Users</span>
                         </li>
                          </Link>
+                        <Link to="/Tasks">
                         <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <img src={TasksCon} alt="Tasks con" />
                             <span>Tasks</span>
                         </li>
+                        </Link>
+                        <Link to="/production">
                         <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <img src={SettingsCon} alt="Settings con" />
-                            <span>Settings</span>
+                            <span>Productions</span>
                         </li>
+                        </Link>
                     </ul>
 
                     {/* Help Centre and Log Out */}

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Login() {
   return (
@@ -69,7 +70,7 @@ export default function Login() {
                     Forgot password
                   
                 </div>
-
+            <Link to='/'>
             <div>
               <button
                 type="submit"
@@ -78,6 +79,7 @@ export default function Login() {
                 Sign in
               </button>
             </div>
+            </Link>
           </form>
         </div>
       </div>

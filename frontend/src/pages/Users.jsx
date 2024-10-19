@@ -1,4 +1,4 @@
-import { Bell, ChevronDown, Filter, Grid, LogOut, PenSquare, Plus, Search } from "lucide-react"
+import { Bell, ChevronDown, Filter, Grid, LogOut, PenSquare, Plus, Search,Trash2 } from "lucide-react"
 //import { Button } from "@/components/ui/button"
 
 
@@ -6,14 +6,14 @@ export default function Users() {
 
 
   const users = [
-    { role: "Manager", color: "text-red-500" },
-    { role: "Technicien", color: "text-green-500" },
-    { role: "Operater", color: "text-purple-500" },
-    { role: "Technicien", color: "text-green-500" },
-    { role: "Manager", color: "text-red-500" },
-    { role: "Technicien", color: "text-green-500" },
-    { role: "Technicien", color: "text-green-500" },
-    { role: "Operater", color: "text-purple-500" },
+    { id:"000",name:"name1",role: "Manager", color: "text-red-500" },
+    { id:"001",name:"name2",role: "Technicien", color: "text-green-500" },
+    { id:"002",name:"name2",role: "Operater", color: "text-purple-500" },
+    { id:"003",name:"name2",role: "Technicien", color: "text-green-500" },
+    { id:"004",name:"name2",role: "Manager", color: "text-red-500" },
+    { id:"005",name:"name2",role: "Technicien", color: "text-green-500" },
+    { id:"007",name:"name2",role: "Technicien", color: "text-green-500" },
+    { id:"008",name:"name2",role: "Operater", color: "text-purple-500" },
   ]
 
   return (
@@ -62,10 +62,44 @@ export default function Users() {
     
           </div>
         </div>
+
+
         <div className="space-y-4">
+            <div className="flex flex-row justify-between bg-white p-4 rounded-lg shadow">
+              <div className="flex flex-row space-x-4">
+                <span class='font-bold'>Id</span>
+                <span class='font-bold'>Name</span>
+              </div>
+              <div>
+              <span class='font-bold'>Role</span></div>
+              <div  className="flex flex-row space-x-4">
+                <button class=' bg-white rounded-[10px]  w-[40px] h-[40px]'>
+                    
+                </button>
+                <button class=' bg-white rounded-[10px]  w-[40px] h-[40px]'>
+                    <Trash2 className="text-white ml-2" />
+                </button>
+              </div>
+            </div>
+        </div>
+
+        <div className="mt-4 space-y-4">
           {users.map((user, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg shadow">
-              <span className={`${user.color}`}>{user.role}</span>
+            <div key={index} className="flex flex-row justify-between bg-white p-4 rounded-lg shadow">
+              <div className="flex flex-row space-x-4">
+                <span >{user.id}</span>
+                <span >{user.name}</span>
+              </div>
+              <div>
+              <span className={`${user.color}`}>{user.role}</span></div>
+              <div  className="flex flex-row space-x-4">
+                <button class=' bg-customCyan rounded-[10px] bg-blue-500 w-[40px] h-[40px]'>
+                    <PenSquare className="text-white ml-2" />
+                </button>
+                <button class=' bg-customCyan rounded-[10px] bg-blue-500 w-[40px] h-[40px]'>
+                    <Trash2 className="text-white ml-2" />
+                </button>
+              </div>
             </div>
           ))}
         </div>
