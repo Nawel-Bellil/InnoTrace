@@ -8,7 +8,7 @@ const route=express.Router();
 
 /**
  * @swagger
- * /auth/login:
+ * /api/auth/login:
  *   post:
  *     summary: Login a user
  *     description: Authenticate a user and return an access token.
@@ -74,7 +74,7 @@ route.post("/login",loginUser)
 
 /**
  * @swagger
- * /auth/create-user:
+ * /api/auth/create-user:
  *   post:
  *     summary: Create a new user
  *     description: Register a new user with an email and password. Only accessible by managers.
