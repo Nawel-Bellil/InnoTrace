@@ -1,5 +1,6 @@
 const express=require("express");
 const isUserManager=require("../middlewares/isUserManager.js");
+const checkAlerts=require("../alghorithme/checkForAlerts.js")
 
 
 
@@ -10,17 +11,29 @@ route.post('/:machineId', async (req, res) => {
     const { machineId } = req.params;
     const sensorData = req.body; // the sensor data comes in the body
 
-    
+
     // Emit real-time sensor data to all connected clients
     req.io.emit('sensorData', { 
         data: sensorData 
     });
 
+    
+
+    const alertMessage=checkAlerts(sensorData);
+    if(alertMessage){
+        req.io.emit('alert', {
+            message: alertMessage,
+            machineId: machineId,
+            sensorData: sensorData
+        });
+    }
+
+
     try {
-        // Here, you can handle the incoming sensor data
+
         console.log(`Received data for machine ${machineId}:`, sensorData);
 
-        // // Optionally, you can update the machine data in MongoDB if needed
+    
         // await Machine.updateOne({ machineId }, { $set: { ...sensorData } });
 
         res.status(200).json({ message: 'Data received successfully!' });
