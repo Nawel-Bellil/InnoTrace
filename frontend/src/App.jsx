@@ -1,11 +1,10 @@
-import React from 'react'
-
+import user from './constants/User.js'
+import Layout from './pages/Layout'
 const App = () => {
+  console.log(user)
   return (
-    <div className=' bg-red-800'>
-          <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className='bg-gray-300'>
+         <Layout profile={user} />
 
     </div>
   )
