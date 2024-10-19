@@ -8,8 +8,7 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     role: {
       type: String,
-      enum: ["manager", "operator", "Supervisor"],
-      required: true,
+      enum: ["manager", "operator", "user"],
     },
     assignedMachines: [{ type: Schema.Types.ObjectId, ref: "Machine" }],
     assignedShifts: [{ type: Schema.Types.ObjectId, ref: "Shift" }] // Added field for assigned shifts

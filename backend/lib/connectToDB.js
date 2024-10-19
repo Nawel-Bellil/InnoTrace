@@ -1,7 +1,7 @@
 const mongoose=require("mongoose");
 async function connectToDB(url){
     await mongoose.connect(url,{
-        dbName:" CarManufacturing",
+        dbName:"CarManufacturing",
     });
 
     console.log("connected to the databse");
