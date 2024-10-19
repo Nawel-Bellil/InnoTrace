@@ -2,19 +2,13 @@ const express = require('express');
 const router = express.Router();
 const production = require('../controllers/production');
 
-// Create a new production
-router.post('/', production.createProduction);
+// Middleware for authentication/authorization
+const { authenticate, authorize } = require('../middleware/auth');
 
-// Get all productions
-router.get('/', production.getProductions);
-
-// Get a production by ID
-router.get('/:id', production.getProductionById);
-
-// Update a production by ID
-router.put('/:id', production.updateProduction);
-
-// Delete a production by ID
-router.delete('/:id', production.deleteProduction);
+// Admin routes
+router.post('/schedule', authenticate, authorize('admin'), production.scheduleProduction); // Schedule a new production
+router.get('/scheduled', authenticate, authorize('admin'), production.getScheduledProductions); // Get all scheduled productions
+router.put('/start/:id', authenticate, authorize('admin'), production.startProduction); // Start a production
+router.put('/update/:id', authenticate, authorize('admin'), production.updateScheduledProduction); // Update a scheduled production
 
 module.exports = router;

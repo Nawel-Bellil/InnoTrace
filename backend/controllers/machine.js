@@ -1,4 +1,4 @@
-const Machine = require('../models/Machine');
+const Machine = require('../models/machine');
 
 // Create a new machine
 // Create a new machine

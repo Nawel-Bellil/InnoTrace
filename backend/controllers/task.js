@@ -1,7 +1,4 @@
-const Task = require('../models/task');
-const User = require('../models/user'); 
-const Machine = require('../models/machine'); 
-
+const Task = require('../models/Task');
 
 // Create a new task
 exports.createTask = async (req, res) => {
