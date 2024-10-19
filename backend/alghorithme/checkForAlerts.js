@@ -59,7 +59,7 @@ const thresholds = {
 
 function checkAlerts(sensorData) {
     machineID=sensorData.machine_id
-    const machineThresholds = thresholds[machineId];
+    const machineThresholds = thresholds[machineID];
     
     if (!machineThresholds) {
         return `No thresholds defined for machine ID: ${machineID}`;
