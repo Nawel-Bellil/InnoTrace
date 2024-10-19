@@ -32,7 +32,6 @@ app.use('/api/energy-logs', energyLog);
 app.use('/api/machines', machine);
 
 
-
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI;
 app.listen(PORT,async () => {
