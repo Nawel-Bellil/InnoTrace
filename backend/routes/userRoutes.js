@@ -1,7 +1,7 @@
 const express=require("express");
 const authToken=require("../middlewares/authToken.js");
 const isUserManager=require("../middlewares/isUserManager.js");
-const {delete_user}=require("../controllers/userController.js")
+const {delete_user,change_role}=require("../controllers/userController.js")
 
 
 const route=express.Router();
@@ -103,6 +103,104 @@ const route=express.Router();
  */
 
 route.delete("/delete-user", isUserManager, delete_user);
+
+// change user's role
+/**
+ * @swagger
+ * /user/change_role:
+ *   patch:
+ *     summary: Change a user's role
+ *     description: Allows updating the role of a user. Roles like "manager" cannot be downgraded.
+ *     tags: [User Management]
+ *     security:
+ *       - bearerAuth: []  # Specify your auth method if using JWT
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: user@example.com
+ *                 description: The email of the user whose role is being changed.
+ *               role:
+ *                 type: string
+ *                 example: operator
+ *                 description: The new role to assign (valid roles: operator, user, manager).
+ *             required:
+ *               - email
+ *               - role
+ *     responses:
+ *       200:
+ *         description: Role updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
+ *                   example: "User role has been updated to operator"
+ *       400:
+ *         description: Bad Request - Invalid role or missing information
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "Invalid role provided. Valid roles are: operator, user, manager"
+ *       404:
+ *         description: Not Found - User with the provided email does not exist
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "User not found"
+ *       401:
+ *         description: Unauthorized - Cannot change a user's role who is a manager
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "You can't change a Manager's role"
+ *       500:
+ *         description: Server error - Something went wrong on the server side
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "Server error, please try again later"
+ */
+route.patch("change_role",isUserManager,change_role);
 
 
 

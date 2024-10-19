@@ -82,8 +82,18 @@ try {
       });
     }
 
+        // check that role is valid
+        const validRoles = ["operator", "user", "manager"]; 
+        if (!validRoles.includes(role.toLowerCase())) {
+          return res.status(400).json({
+            error: true,
+            message: `Invalid role provided. Valid roles are: ${validRoles.join(", ")}`,
+          });
+        }
+
     // Hash the password before storing it
     const hashedPassword = await hash.hashPassword(password);
+
 
     // Create a new user
     const newUser = new User({
