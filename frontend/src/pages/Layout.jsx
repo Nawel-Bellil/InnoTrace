@@ -1,4 +1,5 @@
-import {  FaSignOutAlt, FaBars } from "react-icons/fa";
+import { FaSignOutAlt, FaBars } from "react-icons/fa";
+import { Link, Outlet } from 'react-router-dom';
 import React, { useState } from "react";
 import DashboardCon from '/images/Layout/Dashboard.png'
 import MachineCon from '/images/Layout/machines.png'
@@ -40,12 +41,14 @@ const Layout = ({ profile }) => {
                     {/* Menu */}
                     <ul className="flex flex-col space-y-4 px-4">
                         <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-l cursor-pointer">
-                            <img className="text-gray-600" src={DashboardCon} alt="DashboardCon" />
-                            <span>Dashboard</span>
+                            <Link to="/Dashboard">
+                                <img className="text-gray-600" src={DashboardCon} alt="Dashboard Icon" />
+                                <span>Dashboard</span>
+                            </Link>
                         </li>
                         <li className="flex items-center justify-between space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer relative">
                             <div className="flex items-center">
-                                <img className="" src={MachineCon} alt="MachineCon"/>
+                                <img className="" src={MachineCon} alt="MachineCon" />
                                 <span className="ml-3">Machines</span>
                             </div>
                             <span className="text-sm bg-red-500 text-white rounded-full px-2 absolute right-2">2</span>
@@ -85,29 +88,8 @@ const Layout = ({ profile }) => {
 
                 {/* Main content (example content) */}
                 <div className="flex-1 p-9 ml-1">
-                    {/* Your main content goes here */}
-                    <h2 className="text-3xl  font-bold">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Eveniet repudiandae quod doloremque repellat? Minus quas vel, 
-                        illum totam nihil dolorum, soluta, 
-                        ullam dolores repudiandae veritatis saepe reprehenderit praesentium similique quaerat.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Eveniet repudiandae quod doloremque repellat? Minus quas vel, 
-                        illum totam nihil dolorum, soluta, 
-                        ullam dolores repudiandae veritatis saepe reprehenderit praesentium similique quaerat.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Eveniet repudiandae quod doloremque repellat? Minus quas vel, 
-                        illum totam nihil dolorum, soluta, 
-                        ullam dolores repudiandae veritatis saepe reprehenderit praesentium similique quaerat.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Eveniet repudiandae quod doloremque repellat? Minus quas vel, 
-                        illum totam nihil dolorum, soluta, 
-                        ullam dolores repudiandae veritatis saepe reprehenderit praesentium similique quaerat.
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                        Eveniet repudiandae quod doloremque repellat? Minus quas vel, 
-                        illum totam nihil dolorum, soluta, 
-                        ullam dolores repudiandae veritatis saepe reprehenderit praesentium similique quaerat.
-                    </h2>
+                    {/* Replace Lorem Ipsum with the Outlet */}
+                    <Outlet /> {/* This is where the actual page content will be displayed */}
                 </div>
             </div>
         </>
