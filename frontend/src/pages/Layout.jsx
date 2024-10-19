@@ -34,7 +34,7 @@ const Layout = ({ profile }) => {
                 <div className={`fixed top-0 left-0 h-screen bg-gray-100 shadow-lg w-64 transition-transform transform lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:relative lg:h-full lg:w-64 z-10 overflow-y-auto`}>
                     {/* Logo */}
                     <div className="flex items-center justify-center py-6">
-                        <h1 className="text-xl font-bold">Aeon</h1>
+                        <h1 className="text-xl font-bold">InnoTrace</h1>
                     </div>
 
                     {/* Menu */}
