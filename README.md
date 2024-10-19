@@ -65,3 +65,6 @@ The Production Scheduling System aims to facilitate efficient production managem
 - **Frontend Interface**: Consider integrating a frontend interface for better user experience.
 - **Expanded Notification Channels**: Expand the notification system to include different channels (e.g., email or SMS).
 - **Production Analytics**: Implement analytics to monitor production efficiency and performance over time.
+
+
+### for api endpoints documentation visit : https://innotrace.onrender.com/api-docs
