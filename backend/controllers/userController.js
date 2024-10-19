@@ -98,7 +98,33 @@ const change_role=async (req, res) => {
 };
 
 
+
+const getAllUsers = async (req, res) => {
+    try {
+      const users = await User.find({}, "email role name"); // fetch all users with only email, role, and name fields
+  
+      if (!users || users.length === 0) {
+        return res.status(404).json({
+          error: true,
+          message: "No users found",
+        });
+      }
+  
+      return res.status(200).json({
+        error: false,
+        users,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        error: true,
+        message: "Server error, please try again later",
+        errormessage: error.message,
+      });
+    }
+  };
+
 module.exports={
     delete_user,
     change_role,
+    getAllUsers
 }

@@ -1,7 +1,7 @@
 const express=require("express");
 const authToken=require("../middlewares/authToken.js");
 const isUserManager=require("../middlewares/isUserManager.js");
-const {delete_user,change_role}=require("../controllers/userController.js")
+const {delete_user,change_role,getAllUsers}=require("../controllers/userController.js")
 
 
 const route=express.Router();
@@ -30,7 +30,7 @@ const route=express.Router();
  *               email:
  *                 type: string
  *                 format: email
- *                 example: user@example.com
+ *                 example: "user@example.com"
  *                 description: The email of the account to delete.
  *             required:
  *               - email
@@ -200,7 +200,89 @@ route.delete("/delete-user", isUserManager, delete_user);
  *                   type: string
  *                   example: "Server error, please try again later"
  */
-route.patch("change_role",isUserManager,change_role);
+route.patch("/change_role",isUserManager,change_role);
+
+
+//get all users
+/**
+ * @swagger
+ * /user/get_all_users:
+ *   get:
+ *     summary: Retrieve a list of all users
+ *     description: Fetches all users and returns their email, role, and name. This endpoint requires authentication.
+ *     tags: [User Management]
+ *     security:
+ *       - bearerAuth: []  # JWT authentication
+ *     responses:
+ *       200:
+ *         description: List of users retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: boolean
+ *                   example: false
+ *                 users:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       email:
+ *                         type: string
+ *                         format: email
+ *                         example: user@example.com
+ *                         description: The user's email address.
+ *                       role:
+ *                         type: string
+ *                         example: operator
+ *                         description: The role assigned to the user.
+ *                       name:
+ *                         type: string
+ *                         example: John Doe
+ *                         description: The user's name.
+ *       404:
+ *         description: No users found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "No users found"
+ *       401:
+ *         description: Unauthorized access
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "Unauthorized"
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "Server error, please try again later"
+ */
+route.get("/get_all_users",authToken,getAllUsers)
 
 
 
