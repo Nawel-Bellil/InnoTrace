@@ -40,31 +40,39 @@ const Layout = ({ profile }) => {
 
                     {/* Menu */}
                     <ul className="flex flex-col space-y-4 px-4">
-                        <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-l cursor-pointer">
-                            <Link to="/Dashboard">
+                        <Link to="/Dashboard">
+                            <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-l cursor-pointer">
                                 <img className="text-gray-600" src={DashboardCon} alt="Dashboard Icon" />
                                 <span>Dashboard</span>
-                            </Link>
-                        </li>
-                        <li className="flex items-center justify-between space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer relative">
-                            <div className="flex items-center">
-                                <img className="" src={MachineCon} alt="MachineCon" />
-                                <span className="ml-3">Machines</span>
-                            </div>
-                            <span className="text-sm bg-red-500 text-white rounded-full px-2 absolute right-2">2</span>
-                        </li>
+                            </li>
+                        </Link>
+                        <Link to="/Machines">
+                            <li className="flex items-center justify-between space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer relative">
+                                <div className="flex items-center">
+                                    <img className="" src={MachineCon} alt="MachineCon" />
+                                    <span className="ml-3">Machines</span>
+                                </div>
+                                <span className="text-sm bg-red-500 text-white rounded-full px-2 absolute right-2">2</span>
+                            </li>
+                        </Link>
+                        <Link to="/Users">
                         <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <img src={UserCon} alt="UserCon" />
                             <span>Users</span>
                         </li>
+                        </Link>
+                        <Link to="Tasks">
                         <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <img src={TasksCon} alt="Tasks con" />
                             <span>Tasks</span>
                         </li>
+                        </Link>
+                        <Link to="Settings">
                         <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <img src={SettingsCon} alt="Settings con" />
                             <span>Settings</span>
                         </li>
+                        </Link>
                     </ul>
 
                     {/* Help Centre and Log Out */}
