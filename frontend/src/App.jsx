@@ -6,13 +6,21 @@ import Login from './pages/Login';
 import Machines from './pages/Machines';
 import Users from './pages/Users';
 import Tasks from './pages/Tasks';
+import userData from './constants/User'; // Import the user data
 
 function App() {
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [loginFailed, setLoginFailed] = useState(false); // State for login failure
 
-    // This function will simulate login and set authenticated to true
-    const handleLogin = () => {
-        setIsAuthenticated(true);
+    // This function handles the login process
+    const handleLogin = (email, password) => {
+        // Check credentials against user data
+        if (email === userData.email && password === userData.password) {
+            setIsAuthenticated(true);
+            setLoginFailed(false); // Reset login failure state
+        } else {
+            setLoginFailed(true); // Set login failure state
+        }
     };
 
     return (
@@ -25,7 +33,7 @@ function App() {
                         isAuthenticated ? (
                             <Navigate to="/Dashboard" replace />
                         ) : (
-                            <Login onLogin={handleLogin} />
+                            <Login onLogin={handleLogin} loginFailed={loginFailed} /> // Pass props to Login
                         )
                     } 
                 />
