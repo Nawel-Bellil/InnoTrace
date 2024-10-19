@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import tasksData from '../tasks_data';  // Importing the tasks data
+import tasksData from '../constants/tasks_data';  // Importing the tasks data
 
 const Tasks = () => {
     const [tasks, setTasks] = useState(tasksData);  // State for managing tasks
