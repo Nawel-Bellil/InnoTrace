@@ -46,7 +46,6 @@ const Layout = ({ profile }) => {
                                 <span>Dashboard</span>
                             </li>
                         </Link>
-                        <Link to="/Machines">
                         <li className="flex items-center justify-between space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer relative">
                             <div className="flex items-center">
                                 <img className="" src={MachineCon} alt="MachineCon" />
@@ -54,7 +53,6 @@ const Layout = ({ profile }) => {
                             </div>
                             <span className="text-sm bg-red-500 text-white rounded-full px-2 absolute right-2">2</span>
                         </li>
-                        </Link>
                         <Link to="/users">
                         <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <img src={UserCon} alt="UserCon"  />
