@@ -1,4 +1,4 @@
-import {  FaCogs, FaUser, FaTasks, FaQuestionCircle, FaSignOutAlt, FaBars } from "react-icons/fa";
+import {  FaSignOutAlt, FaBars } from "react-icons/fa";
 import React, { useState } from "react";
 import DashboardCon from '/images/Layout/Dashboard.png'
 import MachineCon from '/images/Layout/machines.png'
@@ -24,7 +24,7 @@ const Layout = ({ profile }) => {
             <div className="flex">
                 {/* Toggle button for mobile view */}
                 <button
-                    className="text-gray-800 p-3 focus:outline-none lg:hidden z-20" // Added z-index to ensure button is on top
+                    className="text-gray-800 p-3 fixed focus:outline-none lg:hidden z-20" // Added z-index to ensure button is on top
                     onClick={toggleSidebar}
                 >
                     <FaBars size={24} />
@@ -84,9 +84,30 @@ const Layout = ({ profile }) => {
                 </div>
 
                 {/* Main content (example content) */}
-                <div className="flex-1 p-8">
+                <div className="flex-1 p-9 ml-1">
                     {/* Your main content goes here */}
-                    <h2 className="text-3xl font-bold">Main Content Area</h2>
+                    <h2 className="text-3xl  font-bold">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                        Eveniet repudiandae quod doloremque repellat? Minus quas vel, 
+                        illum totam nihil dolorum, soluta, 
+                        ullam dolores repudiandae veritatis saepe reprehenderit praesentium similique quaerat.
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                        Eveniet repudiandae quod doloremque repellat? Minus quas vel, 
+                        illum totam nihil dolorum, soluta, 
+                        ullam dolores repudiandae veritatis saepe reprehenderit praesentium similique quaerat.
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                        Eveniet repudiandae quod doloremque repellat? Minus quas vel, 
+                        illum totam nihil dolorum, soluta, 
+                        ullam dolores repudiandae veritatis saepe reprehenderit praesentium similique quaerat.
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                        Eveniet repudiandae quod doloremque repellat? Minus quas vel, 
+                        illum totam nihil dolorum, soluta, 
+                        ullam dolores repudiandae veritatis saepe reprehenderit praesentium similique quaerat.
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                        Eveniet repudiandae quod doloremque repellat? Minus quas vel, 
+                        illum totam nihil dolorum, soluta, 
+                        ullam dolores repudiandae veritatis saepe reprehenderit praesentium similique quaerat.
+                    </h2>
                 </div>
             </div>
         </>
