@@ -1,7 +1,5 @@
 const express=require("express");
 const isUserManager=require("../middlewares/isUserManager.js");
-const {loginUser,create_user}=require("../controllers/authController.js");
-
 
 
 
@@ -10,7 +8,7 @@ const route=express.Router();
 
 route.post('/:machineId', async (req, res) => {
     const { machineId } = req.params;
-    const sensorData = req.body; // Assuming the sensor data comes in the body
+    const sensorData = req.body; // the sensor data comes in the body
 
     console.log(`machine is ${machineId}`);
     console.log(req.body)
