@@ -6,9 +6,6 @@ const userRoute=require("./routes/userRoutes");
 const machineRoute=require("./routes/machineRoute");
 const machinedataRoute=require("./routes/machines_data3")
 const connectToDB = require("./lib/connectToDB");
-const swaggerJSDoc=require("swagger-jsdoc")
-const swaggerUi=require("swagger-ui-express")
-
 
 const app = express(); 
 
@@ -44,16 +41,23 @@ app.use("/auth",authRoute);
 //user route
 app.use("/user",userRoute);
 
-//machine route
+
+  //machine route
 app.use("/machine",machineRoute)
 
 /// machine data (test)
 
 app.use("/machines_data3",machinedataRoute)
 
-
-
-
+app.use('/api/users', user);
+app.use('/api/products', product);
+app.use('/api/productions', production);
+app.use('/api/sensors', sensor);
+app.use('/api/shifts', shift);
+app.use('/api/tasks', task);
+app.use('/api/alerts', alert);
+app.use('/api/energy-logs', energyLog);
+app.use('/api/machines', machine);
 
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI;
