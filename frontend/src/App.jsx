@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Machines from './pages/Machines';
 import Users from './pages/Users';
 import Tasks from './pages/Tasks';
+import Production from './pages/Production'
 import userData from './constants/User'; // Import the user data
 
 function App() {
@@ -56,6 +57,10 @@ function App() {
                     <Route 
                         path="Tasks" 
                         element={isAuthenticated ? <Tasks /> : <Navigate to="/" replace />}
+                    />
+                    <Route 
+                        path="Production" 
+                        element={isAuthenticated ? <Production /> : <Navigate to="/" replace />}
                     />
                 </Route>
             </Routes>

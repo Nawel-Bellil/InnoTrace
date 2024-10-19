@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import DesktopRobot from '/public/desktop-image.png';
-import MobileRobot from '/public/mobile-image.png';
+import DesktopRobot from '/desktop-image.png';
+import MobileRobot from '/mobile-image.png';
 
 export default function Login({ onLogin, loginFailed }) {
   const [email, setEmail] = useState('');
