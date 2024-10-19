@@ -2,12 +2,54 @@ const Task = require('../models/Task');
 
 // Create a new task
 exports.createTask = async (req, res) => {
+  const { machineId, userId, taskType, scheduledAt } = req.body;
+
+  if (!machineId || !userId || !taskType || !scheduledAt) {
+    return res.status(400).json({
+      error: true,
+      message: 'Please provide all required fields',
+    });
+  }
+
   try {
-    const task = new Task(req.body);
+    // Verify if the machine exists
+    const machine = await Machine.findById(machineId);
+    if (!machine) {
+      return res.status(404).json({
+        error: true,
+        message: `Machine with ID '${machineId}' not found.`,
+      });
+    }
+
+    // Verify if the user exists
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        error: true,
+        message: `User with ID '${userId}' not found.`,
+      });
+    }
+
+    // Create a new task
+    const task = new Task({
+      machine: machine._id,
+      assignedTo: user._id,
+      taskType,
+      scheduledAt,
+    });
+
     await task.save();
-    res.status(201).json(task);
+
+    return res.status(201).json({
+      error: false,
+      message: 'Task created successfully',
+      task,
+    });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    return res.status(500).json({
+      error: true,
+      message: 'Server error, please try again later.',
+    });
   }
 };
 

@@ -2,8 +2,13 @@ require('dotenv').config();
 const express = require("express"); 
 const cors = require("cors"); 
 const authRoute=require("./routes/authRoutes");
-const userRoute=require("./routes/userRoutes")
+const userRoute=require("./routes/userRoutes");
+const machineRoute=require("./routes/machineRoute");
+const machinedataRoute=require("./routes/machines_data3");
+const taskRoute=require("./routes/taskRoutes");
 const connectToDB = require("./lib/connectToDB");
+const swaggerJSDoc=require("swagger-jsdoc")
+const swaggerUi=require("swagger-ui-express")
 
 const app = express(); 
 
@@ -34,22 +39,28 @@ app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocs));
 
 
 // auth route
-app.use("/auth",authRoute);
+app.use("/api/auth",authRoute);
 
 //user route
-app.use("/user",userRoute);
+app.use("/api/user",userRoute);
 
-// Integrate 
-app.use('/api/users', user);
-app.use('/api/products', product);
-app.use('/api/productions', production);
-app.use('/api/sensors', sensor);
-app.use('/api/shifts', shift);
-app.use('/api/tasks', task);
-app.use('/api/alerts', alert);
-app.use('/api/energy-logs', energyLog);
-app.use('/api/machines', machine);
+//machine route
+app.use("/api/machine",machineRoute)
 
+/// machine data (test)
+
+
+app.use("/api/machines_data3",machinedataRoute)
+app.use('/api/tasks', taskRoute);
+
+// app.use('/api/products', product);
+// app.use('/api/productions', production);
+// app.use('/api/sensors', sensor);
+// app.use('/api/shifts', shift);
+
+// app.use('/api/alerts', alert);
+// app.use('/api/energy-logs', energyLog);
+// app.use('/api/machines', machine);
 
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI;
