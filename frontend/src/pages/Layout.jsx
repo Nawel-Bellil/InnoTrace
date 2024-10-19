@@ -22,7 +22,7 @@ const Layout = ({ profile }) => {
 
     return (
         <>
-            <div className="flex">
+            <div className="flex lg : h-[910px] " >
                 {/* Toggle button for mobile view */}
                 <button
                     className="text-gray-800 p-3 fixed focus:outline-none lg:hidden z-20" // Added z-index to ensure button is on top
@@ -32,7 +32,7 @@ const Layout = ({ profile }) => {
                 </button>
 
                 {/* Sidebar */}
-                <div className={`fixed top-0 left-0 h-screen bg-gray-100 shadow-lg w-64 transition-transform transform lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:relative lg:h-full lg:w-64 z-10 overflow-y-auto`}>
+                <div className={`fixed top-0 left-0 h-screen bg-white shadow-lg w-64 transition-transform transform lg:translate-x-0 ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:relative lg:h-full lg:w-64 z-10 overflow-y-auto`}>
                     {/* Logo */}
                     <div className="flex items-center justify-center py-6">
                         <h1 className="text-xl font-bold">InnoTrace</h1>
@@ -47,21 +47,21 @@ const Layout = ({ profile }) => {
                             </li>
                         </Link>
                         <Link to="/Machines">
-                            <li className="flex items-center justify-between space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer relative">
-                                <div className="flex items-center">
-                                    <img className="" src={MachineCon} alt="MachineCon" />
-                                    <span className="ml-3">Machines</span>
-                                </div>
-                                <span className="text-sm bg-red-500 text-white rounded-full px-2 absolute right-2">2</span>
-                            </li>
-                        </Link>
-                        <Link to="/Users">
-                        <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
-                            <img src={UserCon} alt="UserCon" />
-                            <span>Users</span>
+                        <li className="flex items-center justify-between space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer relative">
+                            <div className="flex items-center">
+                                <img className="" src={MachineCon} alt="MachineCon" />
+                                <span className="ml-3">Machines</span>
+                            </div>
+                            <span className="text-sm bg-red-500 text-white rounded-full px-2 absolute right-2">2</span>
                         </li>
                         </Link>
-                        <Link to="Tasks">
+                        <Link to="/users">
+                        <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
+                            <img src={UserCon} alt="UserCon"  />
+                            <span>Users</span>
+                        </li>
+                         </Link>
+                        <Link to="/Tasks">
                         <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
                             <img src={TasksCon} alt="Tasks con" />
                             <span>Tasks</span>
