@@ -16,6 +16,10 @@ const Layout = ({ profile }) => {
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     }
+    const logOutHandler = async () => {
+        Cookies.remove("authToken");
+        window.location.href = "/";
+      };
 
     const { role } = profile;
     console.log(profile);
@@ -86,7 +90,11 @@ const Layout = ({ profile }) => {
                                 <img src={ContactCon} alt="contact us" />
                                 <span>Contact Us</span>
                             </li>
-                            <li className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
+                            <li 
+                                onClick={() => {
+                                    logOutHandler();
+                                  }}
+                                className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-lg cursor-pointer">
                                 <FaSignOutAlt className="text-red-600" />
                                 <span className="text-red-600">Log out</span>
                             </li>

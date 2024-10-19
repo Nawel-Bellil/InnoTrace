@@ -2,7 +2,7 @@
 const tasksData = [
     {
         id: 1,
-        status: "To Do",
+        status: "Pending",
         priority: "Low",
         title: "Brainstorming",
         description: "Brainstorming brings team members' diverse experience into play.",
@@ -12,7 +12,7 @@ const tasksData = [
     },
     {
         id: 2,
-        status: "To Do",
+        status: "Pending",
         priority: "High",
         title: "Wireframes",
         description: "Low fidelity wireframes include the most basic content and visuals.",
