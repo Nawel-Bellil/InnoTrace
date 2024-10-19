@@ -1,4 +1,4 @@
-const EnergyLog = require('../models/EnergyLog');
+const EnergyLog = require('../models/energyLog');
 
 // Create a new energy log
 exports.createEnergyLog = async (req, res) => {

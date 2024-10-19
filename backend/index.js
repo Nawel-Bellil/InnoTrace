@@ -1,5 +1,7 @@
 require('dotenv').config(); 
-const express = require("express"); 
+const express = require("express");
+const http = require('http');
+const { Server } = require('socket.io'); 
 const cors = require("cors"); 
 const authRoute=require("./routes/authRoutes");
 const userRoute=require("./routes/userRoutes");
@@ -11,6 +13,9 @@ const swaggerJSDoc=require("swagger-jsdoc")
 const swaggerUi=require("swagger-ui-express")
 
 const app = express(); 
+const server = http.createServer(app);
+const io = new Server(server);  
+
 
 // Middleware
 app.use(cors()); 
@@ -45,7 +50,10 @@ app.use("/api/auth",authRoute);
 app.use("/api/user",userRoute);
 
 //machine route
-app.use("/api/machine",machineRoute)
+app.use('/api/machine', (req, res, next) => {
+    req.io = io;  // Attach the io instance to the req 
+    next();
+  }, machineRoute);
 
 /// machine data (test)
 
