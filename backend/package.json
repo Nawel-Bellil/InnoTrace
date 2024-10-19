@@ -48,6 +48,7 @@
     "iconv-lite": "^0.4.24",
     "inherits": "^2.0.4",
     "ipaddr.js": "^1.9.1",
+    "jsonwebtoken": "^9.0.2",
     "kareem": "^2.6.3",
     "media-typer": "^0.3.0",
     "memory-pager": "^1.5.0",
@@ -86,6 +87,8 @@
     "socket.io-parser": "^4.2.4",
     "sparse-bitfield": "^3.0.3",
     "statuses": "^2.0.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "toidentifier": "^1.0.1",
     "tr46": "^4.1.1",
     "type-is": "^1.6.18",
@@ -98,7 +101,8 @@
     "ws": "^8.17.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
