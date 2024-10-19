@@ -3,6 +3,7 @@ const User=require("../models/user");
 const hash=require("../lib/hash");
 const jwtUtil = require("../lib/jwt");
 const authToken=require("../middlewares/authToken.js");
+const isUserManager=require("../middlewares/isUserManager.js")
 
 
 const route=express.Router();
@@ -213,16 +214,7 @@ console.log("here is 3")
  *                 message:
  *                   type: string
  */
-route.post("/create-user",authToken,async(req,res)=>{
-
-
-    const owner=req.user
-    if(owner.role!='manager'){
-        return res.status(403).json({
-            error:true,
-            message:"only admin have permission for this opperation",
-        })
-    }
+route.post("/create-user",isUserManager,async(req,res)=>{
 
     const {email,name,password,role}=req.body
     if(!email || !name || !password){
@@ -273,6 +265,7 @@ try {
     });
   }
 });
+
 
 
 
