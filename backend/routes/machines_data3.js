@@ -10,8 +10,11 @@ route.post('/:machineId', async (req, res) => {
     const { machineId } = req.params;
     const sensorData = req.body; // the sensor data comes in the body
 
-    console.log(`machine is ${machineId}`);
-    console.log(req.body)
+    
+    // Emit real-time sensor data to all connected clients
+    req.io.emit('sensorData', { 
+        data: sensorData 
+    });
 
     try {
         // Here, you can handle the incoming sensor data

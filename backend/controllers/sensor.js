@@ -1,4 +1,4 @@
-const Sensor = require("../models/Sensor");
+const Sensor = require("../models/sensor");
 
 // Create a sensor
 exports.createSensor = async (req, res) => {
