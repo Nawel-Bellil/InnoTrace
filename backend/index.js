@@ -1,7 +1,7 @@
 require('dotenv').config(); 
 const express = require("express");
 const http = require('http');
-const { Server } = require('socket.io'); 
+const socketIo = require('socket.io');
 const cors = require("cors"); 
 const authRoute=require("./routes/authRoutes");
 const userRoute=require("./routes/userRoutes");
@@ -12,13 +12,16 @@ const connectToDB = require("./lib/connectToDB");
 const swaggerJSDoc=require("swagger-jsdoc")
 const swaggerUi=require("swagger-ui-express")
 
-const app = express(); 
+const app = express();
 const server = http.createServer(app);
-const io = new Server(server);  
-
+const io = socketIo(server);
 
 // Middleware
 app.use(cors()); 
+app.use((req, res, next) => {
+    req.io = io; // Attach Socket.io to request object
+    next();
+  });  
 app.use(express.json()); 
 
 const swaggerOptions={
@@ -50,10 +53,7 @@ app.use("/api/auth",authRoute);
 app.use("/api/user",userRoute);
 
 //machine route
-app.use('/api/machine', (req, res, next) => {
-    req.io = io;  // Attach the io instance to the req 
-    next();
-  }, machineRoute);
+app.use('/api/machine', machineRoute);
 
 /// machine data (test)
 
