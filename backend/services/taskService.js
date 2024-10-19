@@ -1,5 +1,5 @@
-const Machine = require('../models/Machine');
-const Task = require('../models/Task');
+const Machine = require('../models/machine');
+const Task = require('../models/task');
 const User = require('../models/user');
 
 // Helper function to assign a user to a task
