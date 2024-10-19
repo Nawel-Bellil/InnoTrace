@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const machine = require('../controllers/machine');
+const isUserManager=require("../middlewares/isUserManager")
+const {addMachine}=require('../controllers/machineController')
 
 // Create a new machine
-router.post('/', machine.createMachine);
+router.post('/add_machine',isUserManager,addMachine);
 
 // Get all machines
 router.get('/', machine.getMachines);
