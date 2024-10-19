@@ -11,7 +11,7 @@ const addMachine=async (req, res) => {
     try {
         // Subscribe to the machine via the external API
 
-        const callbackUrl = `${backendUrl}/machines_data3/${machineId}`;
+        const callbackUrl = `${backendUrl}/api/machines_data3/${machineId}`;
 
         
         const response = await axios.post(`${externalAPI}`, {

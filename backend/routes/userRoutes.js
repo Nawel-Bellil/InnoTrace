@@ -13,7 +13,7 @@ const route=express.Router();
 
 /**
  * @swagger
- * /user/delete-user:
+ * /api/user/delete-user:
  *   delete:
  *     summary: Delete a user account
  *     description: Deletes a user account by email. Only accessible by managers. Accounts with manager privileges cannot be deleted.
@@ -107,7 +107,7 @@ route.delete("/delete-user", isUserManager, delete_user);
 // change user's role
 /**
  * @swagger
- * /user/change_role:
+ * /api/user/change_role:
  *   patch:
  *     summary: Change a user's role
  *     description: Allows updating the role of a user. Roles like "manager" cannot be downgraded.
@@ -206,7 +206,7 @@ route.patch("/change_role",isUserManager,change_role);
 //get all users
 /**
  * @swagger
- * /user/get_all_users:
+ * /api/user/get_all_users:
  *   get:
  *     summary: Retrieve a list of all users
  *     description: Fetches all users and returns their email, role, and name. This endpoint requires authentication.
